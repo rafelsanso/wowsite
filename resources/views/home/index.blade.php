@@ -1,3 +1,4 @@
+@inject('charactertype', 'WowSite\Services\Realmd\CharacterService')
 @extends('layouts.main')
 
 @section('title', 'Home')
@@ -14,6 +15,9 @@
 					</li>
 					<li role="presentation">
 						<a href="#listAccounts" aria-controls="listAccounts" role="tab" data-toggle="tab">{{ _('List accounts') }}</a>
+					</li>
+					<li role="presentation">
+						<a href="#topCharacters" aria-controls="topCharacters" role="tab" data-toggle="tab">{{ _('Top 10 Character List') }}</a>
 					</li>
 				</ul>
 
@@ -104,6 +108,37 @@
 							</tbody>
 						</table>
 					</div>
+					<div role="tabpanel" class="tab-pane" id="topCharacters">
+						<h3>{{ _('Top 10 Character List') }}</h3>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>{{ _('Character') }}</th>
+									<th>{{ _('Class') }}</th>
+									<th>{{ _('Race') }}</th>
+									<th>{{ _('Gender') }}</th>
+									<th>{{ _('Level') }}</th>
+									<th>{{ _('status (online)') }}</th>
+									<th class="text-right">{{ _('Reward') }}</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($armory as $character)
+								<tr>
+									<td>{{ $character->guid }}</td>
+									<td>{{ $character->name }}</td>
+									<td>{{ _($charactertype->getClass($character->class)) }}</td>
+									<td>{{ _($charactertype->getRace($character->race)) }}</td>
+									<td>{{ _($charactertype->getGender($character->gender)) }}</td>
+									<td>{{ $character->level }}</td>
+									<td>@if($character->online) online @else offline @endif</td>
+                                    <td class="text-right">Add gold</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+					</div>
 				</div>
 
 				<hr>
@@ -155,6 +190,17 @@
 			</div>
 		</div>
 		<div class="col-sm-3">
+			<div class="page-language">
+				<h3>{{ _('Language') }}</h3>
+				{{-- language selector --}}
+				{!!
+					LaravelGettext::getSelector([
+				        'en_US' => _('English'),
+				        'es_ES' => _('Spanish')
+				    ])->render()
+				!!}
+			</div>
+
 			<div class="server-statistics">
 				<h3>{{ _('Server statistics') }}</h3>
 				<dl>

@@ -23,16 +23,6 @@
 					<p><strong>{{ _('Untouched') }}</strong> {{ _('database, Blizzard rates, No item store, normal drops, etc.') }}</p>
 				</div>
 			</div>
-
-			{{-- language selector --}}
-			<div class="col-md-2">
-				{!!
-					LaravelGettext::getSelector([
-				        'en_US' => _('English'),
-				        'es_ES' => _('Spanish')
-				    ])->render() 
-				!!}
-			</div>
 		</div>
 	</header>
 

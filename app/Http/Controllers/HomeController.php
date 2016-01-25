@@ -59,6 +59,7 @@ class HomeController extends WowSiteController
     {
         return View::make('home.index')
             ->withCharacters($this->characters->total())
+            ->withArmory($this->characters->armory())
             ->withOnline($this->characters->online())
             ->withAccounts($this->accounts->all());
     }
