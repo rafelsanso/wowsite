@@ -110,14 +110,13 @@
 					</div>
 					<div role="tabpanel" class="tab-pane" id="topCharacters">
 						<h3>{{ _('Top 10 Character List') }}</h3>
-						<table class="table table-hover">
+						<table class="table table-hover character-list">
 							<thead>
 								<tr>
 									<th>#</th>
 									<th>{{ _('Character') }}</th>
+									<th>&nbsp;</th>
 									<th>{{ _('Class') }}</th>
-									<th>{{ _('Race') }}</th>
-									<th>{{ _('Gender') }}</th>
 									<th>{{ _('Level') }}</th>
 									<th>{{ _('status (online)') }}</th>
 									<th class="text-right">{{ _('Reward') }}</th>
@@ -127,13 +126,15 @@
 							@foreach($armory as $character)
 								<tr>
 									<td>{{ $character->guid }}</td>
+									<td><span class="character-icon {{$charactertype->getCSS($character->race, $character->gender)}}"></span></td>
 									<td>{{ $character->name }}</td>
 									<td>{{ _($charactertype->getClass($character->class)) }}</td>
-									<td>{{ _($charactertype->getRace($character->race)) }}</td>
-									<td>{{ _($charactertype->getGender($character->gender)) }}</td>
 									<td>{{ $character->level }}</td>
 									<td>@if($character->online) online @else offline @endif</td>
-                                    <td class="text-right">Add gold</td>
+                                    <td class="text-right">
+                                    	<button class="btn btn-warning" type="button">Add 100 gold!</button>
+                                    	<button class="btn btn-warning" type="button">Level up!</button>
+                                    </td>
 								</tr>
 							@endforeach
 							</tbody>

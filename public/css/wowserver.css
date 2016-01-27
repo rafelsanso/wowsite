@@ -14,7 +14,7 @@ Version: 1.0
  * 3.0 - Content
  *   3.1 - Sidebar
  *   3.2 - Tabs
- *   3.3 -
+ *   3.3 - Characters
  * 4.0 - Footer
  * 5.0 - Styling
  * 6.0 - Responsive
@@ -79,6 +79,65 @@ header { margin: 25px 0; }
 }
 .form-line { margin-bottom: 10px; }
 .well h3 { margin-top: 0; }
+
+/* 3.3 - Characters */
+.character-list td { vertical-align: middle !important; }
+.character-icon {
+	background-image: url(../../img/races-ui.jpg);
+	background-repeat: no-repeat;
+	width: 62px;
+	height: 62px;
+	display: inline-block;
+	border-radius: 7px;
+}
+.character-human-male {
+	background-position: -2px -2px;
+}
+.character-human-female {
+	background-position: -66px -2px;
+}
+.character-dwarf-male {
+	background-position: -1px -73px;
+}
+.character-dwarf-female {
+	background-position: -66px -73px;
+}
+.character-gnome-male {
+	background-position: -1px -145px;
+}
+.character-gnome-female {
+	background-position: -65px -145px;
+}
+.character-night-elf-male {
+	background-position: -2px -215px;
+}
+.character-night-elf-female {
+	background-position: -65px -215px;
+}
+.character-tauren-male {
+	background-position: -2px -287px;
+}
+.character-tauren-female {
+	background-position: -66px -287px;
+}
+.character-undead-male {
+	background-position: -1px -358px;
+}
+.character-undead-female {
+	background-position: -66px -359px;
+}
+.character-troll-male {
+	background-position: -1px -430px;
+}
+.character-troll-female {
+	background-position: -65px -430px;
+}
+.character-orc-male {
+	background-position: -2px -501px;
+}
+.character-orc-female {
+	background-position: -65px -501px;
+}
 
 /* 4.0 - Footer */
 footer {

@@ -77,31 +77,47 @@ class CharacterService extends RealmdService
 
     /**
      * Return the race of character from ID
-     * @param  String $location
+     * @param  String $raceID
      * @return String
      */
-    public static function getRace($raceID)
+    public function getRace($raceID)
     {
         return static::CHARACTER_RACE[$raceID];
     }
 
     /**
      * Return the gender of character from ID
-     * @param  String $location
+     * @param  String $genderID
      * @return String
      */
-    public static function getGender($genderID)
+    public function getGender($genderID)
     {
         return static::CHARACTER_GENDER[$genderID];
     }
 
     /**
      * Return the class of character from ID
-     * @param  String $location
+     * @param  String $classID
      * @return String
      */
-    public static function getClass($classID)
+    public function getClass($classID)
     {
         return static::CHARACTER_CLASS[$classID];
+    }
+
+    /**
+     * Return the CSS to show the character
+     * @param  String $raceID
+     * @param  String $genderID
+     * @return String
+     */
+    public function getCSS($raceID, $genderID)
+    {
+        $css = 'character-';
+        $css .= strtolower( $this->getRace($raceID) ) . '-';
+        $css .= strtolower( $this->getGender($genderID) );
+        $css = str_replace(' ', '-', $css);
+
+        return $css;
     }
 }
